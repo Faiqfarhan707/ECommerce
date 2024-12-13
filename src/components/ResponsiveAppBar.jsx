@@ -47,6 +47,28 @@ function ResponsiveAppBar() {
             Faiq-store
           </Typography>
 
+{/* Mobile Menu Icon */}
+<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton size="large" onClick={handleMenuOpen(setAnchorElNav)} color="inherit" aria-label="open menu">
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              open={Boolean(anchorElNav)}
+              onClose={() => handleMenuClose(setAnchorElNav)}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+              sx={{ display: { xs: 'block', md: 'none' } }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={() => handleMenuClose(setAnchorElNav, page)}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+
           
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <Menu
@@ -66,12 +88,11 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-         
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography variant="h5" noWrap component="a" href="/" sx={{ ...logoStyles, mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1 }}>
-            MSK
+          Faiq-store
           </Typography>
 
+  
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
